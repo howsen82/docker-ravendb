@@ -65,3 +65,5 @@ services:
       # - RAVEN_License_Path=/opt/RavenDB/Server/RavenLicense/license.json
     env_file:
       - ./license.env
+
+# docker exec -it CONTAINER_ID /opt/RavenDB/Server/rvn admin-channel
