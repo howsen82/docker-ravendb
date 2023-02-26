@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  raven1:
+    container_name: raven1
+    image: ravendb/ravendb
+    ports:
+      - 8080:8080
+      - 38888:38888
+    extra_hosts:
+      - "hostos:10.211.55.2"
+    environment:
+      - RAVEN_Security_UnsecuredAccessAllowed=PublicNetwork
+      - RAVEN_Setup_Mode=None
+      - RAVEN_DataDir=RavenData
+      - RAVEN_License_Eula_Accepted=true
+      - RAVEN_ServerUrl=http://0.0.0.0:8080
+      - RAVEN_PublicServerUrl=http://hostos:8080
+      - RAVEN_ServerUrl_Tcp=tcp://0.0.0.0:38888
+      - RAVEN_PublicServerUrl_Tcp=tcp://hostos:38888
+      # - RAVEN_Security_Certificate_Path=/xxx/yyy/cert.pfx
+      # - RAVEN_Security_Certificate_Password=xxxx
+      # - RAVEN_License_Path=/opt/RavenDB/Server/RavenLicense/license.json
+    env_file:
+      - ./license.env
+
+  raven2:
+    container_name: raven2
+    image: ravendb/ravendb
+    ports:
+      - 8081:8080
+      - 38889:38888
+    extra_hosts:
+      - "hostos:10.211.55.2"
+    environment:
+      - RAVEN_Security_UnsecuredAccessAllowed=PublicNetwork
+      - RAVEN_Setup_Mode=None
+      - RAVEN_DataDir=RavenData
+      - RAVEN_License_Eula_Accepted=true
+      - RAVEN_ServerUrl=http://0.0.0.0:8080
+      - RAVEN_PublicServerUrl=http://hostos:8081
+      - RAVEN_ServerUrl_Tcp=tcp://0.0.0.0:38888
+      - RAVEN_PublicServerUrl_Tcp=tcp://hostos:38889
+      # - RAVEN_License_Path=/opt/RavenDB/Server/RavenLicense/license.json
+    env_file:
+      - ./license.env
+
+  raven3:
+    container_name: raven3
+    image: ravendb/ravendb
+    ports:
+      - 8082:8080
+      - 38890:38888
+    extra_hosts:
+      - "hostos:10.211.55.2"
+    environment:
+      - RAVEN_Security_UnsecuredAccessAllowed=PublicNetwork
+      - RAVEN_Setup_Mode=None
+      - RAVEN_DataDir=RavenData
+      - RAVEN_License_Eula_Accepted=true
+      - RAVEN_ServerUrl=http://0.0.0.0:8080
+      - RAVEN_PublicServerUrl=http://hostos:8082
+      - RAVEN_ServerUrl_Tcp=tcp://0.0.0.0:38888
+      - RAVEN_PublicServerUrl_Tcp=tcp://hostos:38890
+      # - RAVEN_License_Path=/opt/RavenDB/Server/RavenLicense/license.json
+    env_file:
+      - ./license.env
